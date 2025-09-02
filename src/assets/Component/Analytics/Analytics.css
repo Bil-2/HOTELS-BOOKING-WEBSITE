@@ -1,0 +1,37 @@
+/* Analytics Styles */
+.analytics {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+}
+
+.management-header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  color: white;
+  padding: 40px 0;
+  margin-bottom: 0;
+}
+
+.header-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-subtitle {
+  font-size: 18px;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 300;
+}

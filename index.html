@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#007bff">
+    <meta name="description" content="Hotel Royal Palace - Multi-hotel chain management system with booking, staff management, and AI assistant">
+    <meta name="keywords" content="hotel, booking, management, mobile, responsive">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Touch icons for mobile -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/vite.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/vite.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/vite.svg">
+    
+    <title>Hotel Royal Palace - Mobile Optimized</title>
+    
+    <style>
+      /* Critical CSS for mobile loading */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        touch-action: manipulation;
+      }
+      
+      /* Loading spinner */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #007bff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 9999;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      
+      /* Prevent zoom on input focus */
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+      
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  </head>
+  <body>
+    <div id="root">
+      <div class="loading-spinner"></div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

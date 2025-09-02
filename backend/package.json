@@ -1,0 +1,50 @@
+{
+  "name": "hotel-website-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Hotel Royal Palace Multi-Chain Management System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seed.js",
+    "seed-chain": "node scripts/seedChain.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hotel",
+    "booking",
+    "api",
+    "express",
+    "mongodb",
+    "multi-hotel",
+    "chain-management"
+  ],
+  "author": "Bil-2",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.9.4",
+    "pdfkit": "^0.13.0",
+    "uuid": "^9.0.0",
+    "validator": "^13.11.0",
+    "moment": "^2.29.4",
+    "socket.io": "^4.7.2",
+    "node-cron": "^3.0.2",
+    "express-rate-limit": "^6.10.0",
+    "helmet": "^7.0.0",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    "express-validator": "^7.0.1",
+    "lodash": "^4.17.21",
+    "axios": "^1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
