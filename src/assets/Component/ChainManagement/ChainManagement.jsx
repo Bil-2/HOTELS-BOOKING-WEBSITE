@@ -14,7 +14,7 @@ const ChainManagement = () => {
 
   const fetchChains = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/hotel-chains');
+      const response = await axios.get('http://localhost:5002/api/hotel-chains');
       setChains(response.data.data || []);
     } catch (error) {
       console.error('Error fetching chains:', error);

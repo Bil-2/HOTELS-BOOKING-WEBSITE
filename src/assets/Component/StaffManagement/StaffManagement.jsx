@@ -14,7 +14,7 @@ const StaffManagement = () => {
 
   const fetchStaff = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/staff');
+      const response = await axios.get('http://localhost:5002/api/staff');
       setStaff(response.data.data || []);
     } catch (error) {
       console.error('Error fetching staff:', error);

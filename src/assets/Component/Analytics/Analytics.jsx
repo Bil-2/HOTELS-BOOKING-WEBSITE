@@ -14,7 +14,7 @@ const Analytics = () => {
 
   const fetchAnalytics = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/status');
+      const response = await axios.get('http://localhost:5002/api/status');
       setAnalytics(response.data.statistics || {});
     } catch (error) {
       console.error('Error fetching analytics:', error);

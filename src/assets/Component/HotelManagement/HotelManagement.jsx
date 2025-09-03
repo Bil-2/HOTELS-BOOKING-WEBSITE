@@ -56,7 +56,7 @@ const HotelManagement = () => {
 
   const fetchHotels = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/hotels');
+      const response = await axios.get('http://localhost:5002/api/hotels');
       setHotels(response.data.hotels || []);
     } catch (error) {
       console.error('Error fetching hotels:', error);
@@ -68,7 +68,7 @@ const HotelManagement = () => {
 
   const fetchChains = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/hotel-chain');
+      const response = await axios.get('http://localhost:5002/api/hotel-chain');
       setChains(response.data.chains || []);
     } catch (error) {
       console.error('Error fetching chains:', error);
@@ -98,21 +98,30 @@ const HotelManagement = () => {
   const handleArrayInputChange = (field, index, value) => {
     setHotelForm(prev => ({
       ...prev,
-      [field]: prev[field].map((item, i) => i === index ? value : item)
+      [field]: prev[field] && Array.isArray(prev[field]) ? prev[field].map((item, i) => i === index ? value : item) : []
     }));
   };
 
   const addArrayItem = (field, defaultValue = '') => {
-    setHotelForm(prev => ({
-      ...prev,
-      [field]: [...prev[field], defaultValue]
-    }));
+    setHotelForm(prev => {
+      if (prev && field in prev) {
+        return {
+          ...prev,
+          [field]: prev[field] && Array.isArray(prev[field]) ? [...prev[field], defaultValue] : [defaultValue]
+        };
+      } else {
+        return {
+          ...prev,
+          [field]: [defaultValue]
+        };
+      }
+    });
   };
 
   const removeArrayItem = (field, index) => {
     setHotelForm(prev => ({
       ...prev,
-      [field]: prev[field].filter((_, i) => i !== index)
+      [field]: prev[field] && Array.isArray(prev[field]) ? prev[field].filter((_, i) => i !== index) : []
     }));
   };
 
@@ -173,10 +182,10 @@ const HotelManagement = () => {
     try {
       let response;
       if (modalType === 'add') {
-        response = await axios.post('http://localhost:5001/api/hotels', hotelForm);
+        response = await axios.post('http://localhost:5002/api/hotels', hotelForm);
         toast.success('Hotel added successfully');
       } else if (modalType === 'edit') {
-        response = await axios.put(`http://localhost:5001/api/hotels/${selectedHotel._id}`, hotelForm);
+        response = await axios.put(`http://localhost:5002/api/hotels/${selectedHotel._id}`, hotelForm);
         toast.success('Hotel updated successfully');
       }
 
@@ -191,7 +200,7 @@ const HotelManagement = () => {
   const handleDelete = async (hotelId) => {
     if (window.confirm('Are you sure you want to delete this hotel?')) {
       try {
-        await axios.delete(`http://localhost:5001/api/hotels/${hotelId}`);
+        await axios.delete(`http://localhost:5002/api/hotels/${hotelId}`);
         toast.success('Hotel deleted successfully');
         fetchHotels();
       } catch (error) {
@@ -203,7 +212,7 @@ const HotelManagement = () => {
 
   const toggleHotelStatus = async (hotelId, currentStatus) => {
     try {
-      await axios.patch(`http://localhost:5001/api/hotels/${hotelId}/status`, {
+      await axios.patch(`http://localhost:5002/api/hotels/${hotelId}/status`, {
         isActive: !currentStatus
       });
       toast.success('Hotel status updated');
@@ -349,10 +358,10 @@ const HotelManagement = () => {
                       {[...Array(5)].map((_, i) => (
                         <i
                           key={i}
-                          className={`fas fa-star ${i < hotel.rating ? 'filled' : ''}`}
+                          className={`fas fa-star ${i < (hotel.rating || 0) ? 'filled' : ''}`}
                         ></i>
                       ))}
-                      <span className="rating-text">({hotel.rating})</span>
+                      <span className="rating-text">({hotel.rating || 0}/5)</span>
                     </div>
                   </div>
 

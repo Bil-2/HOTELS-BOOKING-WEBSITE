@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const HotelChain = require('../models/HotelChain');
 const Hotel = require('../models/Hotel');
 const Staff = require('../models/Staff');
-const Inventory = require('../models/Inventory');
 
 // Load environment variables
 dotenv.config();
@@ -22,7 +21,6 @@ const seedData = async () => {
     await HotelChain.deleteMany({});
     await Hotel.deleteMany({});
     await Staff.deleteMany({});
-    await Inventory.deleteMany({});
 
     console.log('🗑️ Cleared existing data');
 
@@ -223,7 +221,6 @@ const seedData = async () => {
           canViewReports: true,
           canManageBookings: true,
           canManageStaff: true,
-          canManageInventory: true,
           canAccessFinancials: true,
           canManageRooms: true,
           canProcessPayments: true
@@ -269,7 +266,6 @@ const seedData = async () => {
           canViewReports: true,
           canManageBookings: true,
           canManageStaff: true,
-          canManageInventory: true,
           canAccessFinancials: true,
           canManageRooms: true,
           canProcessPayments: true
@@ -294,7 +290,6 @@ const seedData = async () => {
           canViewReports: true,
           canManageBookings: true,
           canManageStaff: true,
-          canManageInventory: true,
           canAccessFinancials: true,
           canManageRooms: true,
           canProcessPayments: true
@@ -319,7 +314,6 @@ const seedData = async () => {
           canViewReports: true,
           canManageBookings: true,
           canManageStaff: true,
-          canManageInventory: true,
           canAccessFinancials: true,
           canManageRooms: true,
           canProcessPayments: true
@@ -334,79 +328,11 @@ const seedData = async () => {
 
     console.log('👥 Created staff members');
 
-    // Create Sample Inventory Items
-    const inventoryItems = [
-      // Mumbai Hotel Inventory
-      {
-        itemCode: 'HRP-MUM-TV001',
-        itemName: '55" Smart TV',
-        description: 'Samsung 55-inch Smart LED TV for guest rooms',
-        hotelId: createdHotels[0]._id,
-        chainId: hotelChain._id,
-        location: {
-          department: 'Guest Rooms',
-          floor: 'All Floors',
-          building: 'Main Building'
-        },
-        category: 'Electronics',
-        subCategory: 'Television',
-        currentStock: 100,
-        minimumStock: 10,
-        maximumStock: 120,
-        unit: 'pieces',
-        unitCost: 45000,
-        supplier: {
-          name: 'Samsung Electronics',
-          contact: {
-            phone: '+91-22-1234-5678',
-            email: 'sales@samsung.com'
-          },
-          supplierCode: 'SAM001'
-        },
-        lastPurchaseDate: new Date('2023-01-15'),
-        warrantyExpiry: new Date('2025-01-15')
-      },
-      {
-        itemCode: 'HRP-MUM-LIN001',
-        itemName: 'Bed Sheets Set',
-        description: 'Premium cotton bed sheets set - King size',
-        hotelId: createdHotels[0]._id,
-        chainId: hotelChain._id,
-        location: {
-          department: 'Housekeeping',
-          room: 'Linen Storage',
-          floor: 'Ground Floor'
-        },
-        category: 'Linens',
-        subCategory: 'Bed Linens',
-        currentStock: 200,
-        minimumStock: 50,
-        maximumStock: 300,
-        unit: 'sets',
-        unitCost: 2500,
-        supplier: {
-          name: 'Premium Textiles Ltd',
-          contact: {
-            phone: '+91-22-9876-5432',
-            email: 'orders@premiumtextiles.com'
-          }
-        }
-      }
-    ];
-
-    for (const inventoryData of inventoryItems) {
-      const inventory = new Inventory(inventoryData);
-      await inventory.save();
-    }
-
-    console.log('📦 Created inventory items');
-
-    console.log('\n🎉 Database seeded successfully!');
+    console.log('\n✅ Database seeded successfully!');
     console.log('\n📊 Summary:');
     console.log(`   • Hotel Chain: ${hotelChain.chainName}`);
     console.log(`   • Hotels: ${createdHotels.length}`);
     console.log(`   • Staff Members: ${staffMembers.length}`);
-    console.log(`   • Inventory Items: ${inventoryItems.length}`);
 
     console.log('\n🔐 Login Credentials:');
     console.log('   Chain Admin: vikram.singh@hotelroyalpalace.com / admin123');

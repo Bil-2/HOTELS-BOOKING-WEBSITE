@@ -34,10 +34,10 @@ const AdminDashboard = () => {
 
       // Fetch multiple data sources
       const [statusRes, hotelsRes, chainsRes, staffRes] = await Promise.all([
-        axios.get('http://localhost:5001/api/status'),
-        axios.get('http://localhost:5001/api/hotels', config),
-        axios.get('http://localhost:5001/api/chain', config),
-        axios.get('http://localhost:5001/api/staff', config)
+        axios.get('http://localhost:5002/api/status'),
+        axios.get('http://localhost:5002/api/hotels', config),
+        axios.get('http://localhost:5002/api/chain', config),
+        axios.get('http://localhost:5002/api/staff', config)
       ]);
 
       setDashboardData({
@@ -181,27 +181,21 @@ const AdminDashboard = () => {
                     </Link>
                   </div>
                   <div className="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <Link to="/inventory-management" className="quick-action-btn">
-                      <i className="fas fa-boxes"></i>
-                      <span>Inventory</span>
-                    </Link>
-                  </div>
-                  <div className="col-lg-2 col-md-4 col-sm-6 mb-3">
                     <Link to="/analytics" className="quick-action-btn">
                       <i className="fas fa-chart-bar"></i>
                       <span>Analytics</span>
                     </Link>
                   </div>
                   <div className="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <Link to="/chain-management" className="quick-action-btn">
-                      <i className="fas fa-sitemap"></i>
-                      <span>Chain Settings</span>
-                    </Link>
-                  </div>
-                  <div className="col-lg-2 col-md-4 col-sm-6 mb-3">
                     <Link to="/ai-assistant" className="quick-action-btn">
                       <i className="fas fa-robot"></i>
                       <span>AI Assistant</span>
+                    </Link>
+                  </div>
+                  <div className="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <Link to="/chain-management" className="quick-action-btn">
+                      <i className="fas fa-sitemap"></i>
+                      <span>Chain Settings</span>
                     </Link>
                   </div>
                 </div>
@@ -263,10 +257,9 @@ const AdminDashboard = () => {
                               {[...Array(5)].map((_, i) => (
                                 <i
                                   key={i}
-                                  className={`fas fa-star ${i < Math.floor(hotel.rating) ? 'text-warning' : 'text-muted'}`}
+                                  className={`fas fa-star ${i < Math.floor(hotel.rating || 0) ? 'text-warning' : 'text-muted'}`}
                                 ></i>
                               ))}
-                              <span className="ms-1">{hotel.rating}</span>
                             </div>
                           </td>
                         </tr>

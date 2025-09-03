@@ -100,7 +100,6 @@ const staffSchema = new mongoose.Schema({
     canViewReports: { type: Boolean, default: false },
     canManageBookings: { type: Boolean, default: false },
     canManageStaff: { type: Boolean, default: false },
-    canManageInventory: { type: Boolean, default: false },
     canAccessFinancials: { type: Boolean, default: false },
     canManageRooms: { type: Boolean, default: false },
     canProcessPayments: { type: Boolean, default: false }

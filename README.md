@@ -249,3 +249,145 @@ For support, email: RoyalHotel@info.com
 ---
 
 **Hotel Royal Palace Backend API** - Built with ❤️ using Node.js and Express
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v16 or higher)
+- MongoDB (local or cloud)
+- npm or yarn
+
+### Backend Setup
+1. Navigate to backend directory:
+```bash
+cd backend
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create `.env` file in backend directory:
+```env
+PORT=5002
+MONGODB_URI=mongodb://localhost:27017/hotel-royal-palace-chain
+NODE_ENV=development
+JWT_SECRET=your-jwt-secret-key
+```
+
+4. Start the backend server:
+```bash
+npm run dev
+```
+
+Backend will run on: http://localhost:5002
+
+### Frontend Setup
+1. Navigate to root directory:
+```bash
+cd ..
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Ensure `.env` file exists with correct configuration:
+```env
+VITE_API_BASE_URL=http://localhost:5002
+VITE_BACKEND_PORT=5002
+VITE_FRONTEND_PORT=5173
+```
+
+4. Start the frontend:
+```bash
+npm run dev
+```
+
+Frontend will run on: http://localhost:5173
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### 1. CSS Import Error
+**Error**: `@import must precede all other statements`
+**Solution**: Ensure all `@import` statements are at the top of CSS files
+
+#### 2. API Connection Failed
+**Error**: Network errors or 404 responses
+**Solutions**:
+- Verify backend is running on port 5002
+- Check MongoDB connection
+- Confirm API endpoints match between frontend and backend
+
+#### 3. Date Validation Error
+**Error**: "Please select a date from today onwards"
+**Solution**: Already fixed with timezone-aware date parsing
+
+#### 4. Runtime Errors
+**Error**: Cannot read property of undefined/null
+**Solution**: Added null checks and ErrorBoundary component
+
+### Port Configuration
+- **Backend**: Port 5002 (configurable via PORT env variable)
+- **Frontend**: Port 5173 (Vite default)
+- **MongoDB**: Port 27017 (default)
+
+### API Endpoints
+- Health Check: `GET /api/health`
+- Status: `GET /api/status`
+- Hotels: `/api/hotels`
+- Bookings: `/api/bookings`
+- Staff: `/api/staff`
+- AI Assistant: `/api/ai-assistant`
+
+## 🛠 Development
+
+### Project Structure
+```
+├── backend/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── server.js
+├── src/
+│   ├── assets/Component/
+│   ├── components/
+│   ├── config/
+│   └── App.jsx
+└── package.json
+```
+
+### Key Features
+- Multi-hotel chain management
+- Real-time booking system
+- AI-powered customer assistant
+- Staff management portal
+- Analytics dashboard
+- Responsive mobile design
+
+## 🚨 Error Handling
+
+The application includes:
+- React ErrorBoundary for runtime error catching
+- Comprehensive API error handling
+- Form validation with user-friendly messages
+- Null/undefined safety checks throughout
+
+## 📱 Mobile Support
+
+Fully responsive design optimized for:
+- Mobile phones (320px+)
+- Tablets (768px+)
+- Desktop (1200px+)
+
+## 🔒 Security Features
+
+- JWT authentication
+- Rate limiting
+- Input validation
+- CORS protection
+- Helmet security headers

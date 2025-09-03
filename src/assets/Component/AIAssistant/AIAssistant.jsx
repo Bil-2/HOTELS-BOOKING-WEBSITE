@@ -40,7 +40,7 @@ const AIAssistant = () => {
 
   const fetchAssistantStats = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/api/ai-assistant/stats');
+      const response = await axios.get('http://localhost:5002/api/ai-assistant/stats');
       if (response.data.success) {
         setAssistantStats(response.data.stats);
       }
@@ -56,7 +56,7 @@ const AIAssistant = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5001/api/ai-assistant/start-session', {
+      const response = await axios.post('http://localhost:5002/api/ai-assistant/start-session', {
         customerInfo
       });
 
@@ -101,7 +101,7 @@ const AIAssistant = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5001/api/ai-assistant/send-message', {
+      const response = await axios.post('http://localhost:5002/api/ai-assistant/send-message', {
         sessionId,
         message: inputMessage,
         customerInfo
@@ -151,7 +151,7 @@ const AIAssistant = () => {
     if (!sessionId) return;
 
     try {
-      await axios.post('http://localhost:5001/api/ai-assistant/end-session', {
+      await axios.post('http://localhost:5002/api/ai-assistant/end-session', {
         sessionId,
         feedback: { rating: 5, comment: 'Session ended by user' }
       });
